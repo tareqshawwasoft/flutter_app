@@ -1,11 +1,9 @@
-import 'dart:html';
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 
 void main() {
   runApp(const MyApp());
 }
+
 //stateless does not change ,, changless > but the statefull widget is changefull. can be changed .
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -13,8 +11,9 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(//this widget is the 7adena of the application, and is the container of containers.,,and is also a widget.
-    debugShowCheckedModeBanner: false,
+    return MaterialApp(
+      //this widget is the 7adena of the application, and is the container of containers.,,and is also a widget.
+      debugShowCheckedModeBanner: false,
       title: 'First Flutter  project',
       theme: ThemeData(
         // This is the theme of your application.
@@ -75,33 +74,79 @@ class _MyHomePageState extends State<MyHomePage> {
     // than having to individually change instances of widgets.
     return Scaffold(
       appBar: AppBar(
-        // Tareq Marwan Alshawwa 20190221
-        // طارق مروان الشوا 20190221
         centerTitle: true,
-
         backgroundColor: Colors.white,
-        title: const Text('Home',
-            style: TextStyle(fontSize: 20 ,
-                fontWeight: FontWeight. bold,
-                color :Colors.black ),
-
+        title: Text(
+          widget.title,
+          style: const TextStyle(color: Colors.black),
+        ), //Image.asset('assets/images/pic.png'
+        leading: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(50),
+            child: Image.asset(
+              'assets/images/pic.jpeg',
+              fit: BoxFit.cover,
+              height: 10,
+            ),
+          ),
         ),
-          leading:
-      IconButton(
-      icon: Image.asset('assets/images/pic.jpeg'),
-          onPressed: () => exit(0),
-          padding:  const EdgeInsets.all(10.0)
-      ),
-        actions: const [
-          SizedBox(width:10),
-          Icon(Icons.search,
-          color: Colors.blue,),
-          SizedBox(width:10),
-          Icon(Icons.notifications,
-          color: Colors.blue),
-          SizedBox(width:10)
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 15),
+            child: Row(
+              children: const [
+                Padding(
+                  padding: EdgeInsets.only(right: 15.0),
+                  child: Icon(
+                    Icons.search,
+                    color: Colors.blue,
+                  ),
+                ),
+                Icon(
+                  Icons.notifications,
+                  color: Colors.blue,
+                )
+              ],
+            ),
+          )
         ],
       ),
+      body: Center(
+        // Center is a layout widget. It takes a single child and positions it
+        // in the middle of the parent.
+        child: Column(
+          // Column is also a layout widget. It takes a list of children and
+          // arranges them vertically. By default, it sizes itself to fit its
+          // children horizontally, and tries to be as tall as its parent.
+          //
+          // Invoke "debug painting" (press "p" in the console, choose the
+          // "Toggle Debug Paint" action from the Flutter Inspector in Android
+          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
+          // to see the wireframe for each widget.
+          //
+          // Column has various properties to control how it sizes itself and
+          // how it positions its children. Here we use mainAxisAlignment to
+          // center the children vertically; the main axis here is the vertical
+          // axis because Columns are vertical (the cross axis would be
+          // horizontal).
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            const Text(
+              'You have pushed the button this many times:',
+            ),
+            Text(
+              '$_counter',
+              style: Theme.of(context).textTheme.headline4,
+            ),
+          ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _incrementCounter,
+        tooltip: 'Increment',
+        child: const Icon(Icons.add),
+      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
