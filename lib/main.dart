@@ -75,8 +75,11 @@ class _MyHomePageState extends State<MyHomePage> {
     // than having to individually change instances of widgets.
     return Scaffold(
       appBar: AppBar(
+        // Tareq Marwan Alshawwa 20190221
+        // طارق مروان الشوا 20190221
+
         backgroundColor: Colors.white,
-        title: Text(widget.title),//Image.asset('assets/images/pic.png'
+        title: const Text('Home',style: TextStyle(fontSize: 20 , color :Colors.black )),
           leading:
       IconButton(
       icon: Image.asset('assets/images/pic.jpeg'),
@@ -84,8 +87,10 @@ class _MyHomePageState extends State<MyHomePage> {
           padding:  const EdgeInsets.all(10.0)
       ),
         actions: const [
-          Icon(Icons.search),
-          Icon(Icons.notifications)
+          Icon(Icons.search,
+              color:Colors.blue),
+          Icon(Icons.notifications,
+          color: Colors.blue,)
         ],
       ),
       body: Center(
