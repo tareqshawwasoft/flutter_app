@@ -16,18 +16,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'First Flutter  project',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Home'),
+      home: const MyHomePage(title: 'Welcome'),
     );
   }
 }
@@ -51,18 +42,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
 
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -75,75 +55,238 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Colors.white,
         title: Text(
           widget.title,
-          style: const TextStyle(color: Colors.black),
+          style: const TextStyle(color: Colors.blueAccent),
         ),
-        leading: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(50),
-            child: Image.asset(
-              'assets/images/pic.jpeg',
-              fit: BoxFit.cover,
-              height: 10,
-            ),
-          ),
-        ),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 15),
-            child: Row(
-              children: const [
-                Padding(
-                  padding: EdgeInsets.only(right: 15.0),
-                  child: Icon(
-                    Icons.search,
-                    color: Colors.blue,
-                  ),
-                ),
-                Icon(
-                  Icons.notifications,
-                  color: Colors.blue,
-                )
-              ],
-            ),
-          )
-        ],
+        // leading: Padding(
+        //   padding: const EdgeInsets.all(8.0),
+        //   // child: ClipRRect(
+        //   //   borderRadius: BorderRadius.circular(50),
+        //   //   child: Image.asset(
+        //   //     'assets/images/pic.jpeg',
+        //   //     fit: BoxFit.cover,
+        //   //     height: 10,
+        //   //   ),
+        //   // ),
+        // ),
+        // actions: [
+        //   Padding(
+        //     padding: const EdgeInsets.only(right: 15),
+        //     child: Row(
+        //       children: const [
+        //         Padding(
+        //           padding: EdgeInsets.only(right: 15.0),
+        //           child: Icon(
+        //             Icons.search,
+        //             color: Colors.blue,
+        //           ),
+        //         ),
+        //         Icon(
+        //           Icons.notifications,
+        //           color: Colors.blue,
+        //         )
+        //       ],
+        //     ),
+        //   )
+        // ],
       ),
+      // wrap with widger that has the attributes you wish to have , wrap them with container because it contains most attributes. or expanded widget. that means that expanded widget makes your widgets better on all devices so use it instead.
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
+        //vyzor app
+
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const SizedBox(
+            height: 100,
+            width: 100,
+          ),
+          Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+              child:ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const FirstRoute()),
+                  );
+                },
+                child: const Center(
+                  child: Text('Sign Up',
+                    style: TextStyle(fontSize: 18),
+                  ),
+                ),
+              )
+          ),
+          const SizedBox(
+            height: 10,
+            width: 10,
+          ),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+          child:ElevatedButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const SecondRoute()),
+              );
+           },
+          child: const Center(
+          child: Text('Sign In',
+          style: TextStyle(fontSize: 18),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+    ))
+        ],
+      ),
+     // This trailing comma makes auto-formatting nicer for build methods.
+    )
+    );
+  }
+}
+class FirstRoute extends StatelessWidget {
+  const FirstRoute({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Sign Up'),
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            const SizedBox(
+              height: 100,
+              width: 100,
+            ),
+
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+              child: TextField(
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  hintText: 'Create Username',
+                ),
+              ),
+            ),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+              child: TextField(
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  hintText: 'First Name',
+                ),
+              ),
+            ),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+              child: TextField(
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  hintText: 'Last Name',
+                ),
+              ),
+            ),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 80, vertical: 20),
+              child: TextField(
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  hintText: 'Age',
+                ),
+              ),
+            ),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+              child: TextField(
+                obscureText: true,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  hintText: 'Password',
+                ),
+              ),
+            ),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+              child: TextField(
+                obscureText: true,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  hintText: 'Confirm Password',
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 100,
+              width: 100,
+            ),
+           Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+            child: ElevatedButton(
+            child: const Text('Sign Up!'),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
+          )
+          ],
+
+        )
+
+      ),
+    );
+  }
+}
+
+class SecondRoute extends StatelessWidget {
+  const SecondRoute({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Second Route'),
+      ),
+      body: Center(
+        child: Column(
+          children: [
+            const SizedBox(
+              height: 100,
+              width: 100,
+            ),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+              child: TextField(
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  hintText: 'Create Username',
+                ),
+              ),
+            ),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+              child: TextField(
+                obscureText: true,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  hintText: 'Password',
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 100,
+              width: 100,
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pop(context);          },
+              child: const Text('Sign In!'),
+            ),
+          ],
+        )
+
+      ),
     );
   }
 }
